@@ -79,6 +79,12 @@ class Client
 
     public function getVersion()
     {
+        static $version;
+
+        if (null !== $version) {
+            return $version;
+        }
+
         $process = new Process($this->getPath() . ' --version');
         $process->run();
 
